@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BALAJI P | EEE Core Portfolio</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+:root {
+    --electric: #60a5fa;
+    --slate-dark: #0f172a;
+    --slate-light: #1e293b;
+}
+
+/* RESET */
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: radial-gradient(circle at center, var(--slate-light) 0%, var(--slate-dark) 100%);
+    color:#f1f5f9;
+    overflow-x:hidden;
+    scroll-behavior:smooth;
+}
+
+/* ORIGINAL PLASMA BACKGROUND */
+.bg-canvas {
+    position: fixed; top:0; left:0; width:100%; height:100%;
+    z-index:-1; pointer-events:none; opacity:0.5;
+}
+
+.plasma-line {
+    fill:none; stroke:var(--electric); stroke-width:2;
+    stroke-dasharray:150,1000;
+    filter: drop-shadow(0 0 12px var(--electric));
+    animation: voltage-flow 4s linear infinite;
+}
+
+@keyframes voltage-flow {
+    0% { stroke-dashoffset:1150; opacity:0.2; }
+    50% { opacity:1; }
+    100% { stroke-dashoffset:0; opacity:0.2; }
+}
+
+/* GLASS / PCB CARDS */
+.pcb-card {
+    background: rgba(30,41,59,0.6);
+    border:1px solid rgba(148,163,184,0.1);
+    backdrop-filter: blur(12px);
+    border-radius:20px;
+    transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
+}
+.pcb-card:hover {
+    border-color: var(--electric);
+    box-shadow:0 0 30px rgba(96,165,250,0.2);
+    transform: translateY(-8px);
+}
+
+/* FLOATING ANIMATION */
+.float-anim { animation: float 4s ease-in-out infinite; }
+@keyframes float { 0%,100%{transform:translateY(0);}50%{transform:translateY(-15px);} }
+
+/* REVEAL ANIMATION */
+.reveal { opacity:0; transform:translateY(30px); transition: all 0.8s ease-out; }
+.reveal.active { opacity:1; transform:translateY(0); }
+
+/* PROJECT CARD EXPAND */
+.project-card { position:relative; cursor:pointer; transition: transform 0.5s ease, box-shadow 0.4s ease; }
+.project-card:hover { transform:translateY(-6px); box-shadow:0 0 25px rgba(96,165,250,0.25); }
+.project-front { transition: all 0.5s ease; }
+.project-back { display:none; opacity:0; transform:translateY(-10px); transition: all 0.5s ease; }
+.project-card.expanded .project-front { transform:scaleY(0); opacity:0; }
+.project-card.expanded .project-back { display:block; opacity:1; transform:translateY(0); animation: fadeIn 0.5s ease forwards; }
+@keyframes fadeIn { 0%{opacity:0; transform:translateY(-10px);} 100%{opacity:1; transform:translateY(0);} }
+
+/* CERTIFICATE REVEAL */
+.cert-back { display:none; opacity:0; transform:translateY(-10px); transition: all 0.5s ease; margin-top:1rem; }
+.cert-back.show { display:block; opacity:1; transform:translateY(0); }
+
+/* ICON HOVER */
+.icon { transition: transform 0.3s; }
+.icon:hover { transform: scale(1.1); }
+
+/* RESPONSIVE GRID */
+.grid-cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.5rem; }
+
+</style>
+</head>
+<body>
+
+<!-- PLASMA BACKGROUND -->
+<div class="bg-canvas">
+    <svg width="100%" height="100%" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#334155" stroke-width="2" fill="none">
+            <path d="M550,800 L600,100 L650,800 M575,450 L625,450 M590,250 L610,250 M500,200 L700,200 M450,400 L750,400" />
+        </g>
+        <path class="plasma-line" d="M700,200 C900,250 1100,220 1300,200" />
+        <path class="plasma-line" style="animation-delay: -1.5s" d="M750,400 C950,450 1150,420 1300,400" />
+        <path class="plasma-line" style="animation-delay: -0.5s" d="M500,200 C300,250 100,220 -100,200" />
+        <path class="plasma-line" style="animation-delay: -2.2s" d="M450,400 C250,450 50,420 -100,400" />
+    </svg>
+</div>
+
+<!-- HOME SECTION -->
+<section id="home" class="min-h-screen flex flex-col items-center justify-center text-center px-6">
+    <div class="float-anim mb-8">
+        <div class="w-36 h-36 md:w-48 md:h-48 rounded-full border-4 border-blue-500/20 p-2 bg-slate-900 shadow-2xl">
+            <img src="profile.jpg" alt="BALAJI P" class="w-full h-full rounded-full object-cover">
+        </div>
+    </div>
+    <h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter mb-4 text-white uppercase">BALAJI P</h1>
+    <p class="text-blue-400 text-lg md:text-xl font-bold tracking-[0.3em] uppercase opacity-90">
+        Electrical & Electronics Engineering Student | Passionate about Core & Tech
+    </p>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="py-24 px-6 reveal max-w-4xl mx-auto">
+    <div class="pcb-card p-10 md:p-14 rounded-[40px] text-center">
+        <h2 class="text-blue-500 font-bold uppercase tracking-widest text-xs mb-8">About Me</h2>
+        <p class="text-xl md:text-2xl text-slate-200 font-light leading-relaxed">
+            Hello I'm <span class="text-white font-semibold">BALAJI P</span>, a 2nd-year Electrical and Electronics Engineering student at PSNA College of Engineering and Technology.
+        </p>
+        <p class="text-x1 md:text-2xl text-slate-200 font-light leading-relaxed mt-6">
+            I have a strong interest in core electrical systems, power engineering, and emerging technologies, along with growing skills in software development and problem-solving.
+        </p>
+        <p class="text-xl md:text-2xl text-slate-200 font-light leading-relaxed mt-6">
+            I am an IEEE Power & Energy Society member, actively exploring practical applications through projects, workshops, and self-learning. My goal is to build solutions that connect electrical engineering with modern technology and contribute meaningfully to the industry.
+        </p>
+        <div class="mt-8 flex flex-col gap-2 text-sm md:text-base">
+            <p class="text-slate-400 italic">Proud Member of IEEE Power & Energy Society</p>
+            <p class="text-blue-400 font-bold">Web Master – IEEE Student Branch PSNACET</p>
+        </div>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="py-24 px-6 max-w-6xl mx-auto reveal">
+    <h2 class="text-3xl font-bold mb-16 text-center">Technical Expertise</h2>
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+        <div class="pcb-card p-8 rounded-2xl text-center group">
+            <i data-lucide="zap" class="mx-auto mb-4 text-blue-400 group-hover:scale-110 transition"></i>
+            <h3 class="text-[10px] font-bold uppercase tracking-tighter">Electric Circuit Analysis</h3>
+        </div>
+        <div class="pcb-card p-8 rounded-2xl text-center group">
+            <i data-lucide="code-2" class="mx-auto mb-4 text-blue-400 group-hover:scale-110 transition"></i>
+            <h3 class="text-[10px] font-bold uppercase tracking-tighter">Python Programming</h3>
+        </div>
+        <div class="pcb-card p-8 rounded-2xl text-center group">
+            <i data-lucide="code-2" class="mx-auto mb-4 text-blue-400 group-hover:scale-110 transition"></i>
+            <h3 class="text-[10px] font-bold uppercase tracking-tighter">C Programming</h3>
+        </div>
+        <div class="pcb-card p-8 rounded-2xl text-center group">
+            <i data-lucide="cpu" class="mx-auto mb-4 text-blue-400 group-hover:scale-110 transition"></i>
+            <h3 class="text-[10px] font-bold uppercase tracking-tighter">IoT/Embedded Systems</h3>
+        </div>
+        <div class="pcb-card p-8 rounded-2xl text-center group">
+            <i data-lucide="activity" class="mx-auto mb-4 text-blue-400 group-hover:scale-110 transition"></i>
+            <h3 class="text-[10px] font-bold uppercase tracking-tighter">MATLAB / Simulation</h3>
+        </div>
+        <div class="pcb-card p-8 rounded-2xl text-center group">
+            <i data-lucide="brain-circuit" class="mx-auto mb-4 text-blue-400 group-hover:scale-110 transition"></i>
+            <h3 class="text-[10px] font-bold uppercase tracking-tighter">Problem Solving</h3>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS & EXPERIENCE -->
+<section id="projects" class="py-24 px-6 max-w-6xl mx-auto reveal">
+    <h2 class="text-3xl font-bold mb-12">Projects & Experience</h2>
+    <div class="grid md:grid-cols-2 gap-8">
+        <!-- Project 1 -->
+        <div class="pcb-card project-card p-10 rounded-3xl">
+            <div class="project-front">
+                <h3 class="text-2xl font-bold mb-2">24-Hour Hackathon</h3>
+                <p class="text-slate-400 text-sm">Quick intro: Solved real-world challenges in 24 hours.</p>
+            </div>
+            <div class="project-back">
+                <p class="text-slate-200 text-sm mt-4">
+                    Detailed description:
+                     I had the chance to participate in TechX Madras 2025 Hackathon, organized by the IEEE Computer Society - SSIT at Sri Sairam Institute of Technology, held on September 10–11, 2025.
+
+                </p>
+                <p class="text-slate-200 text-sm mt-4">
+                    This 24-hour hackathon was an exciting learning journey where I got to:
+                </p>
+                <p class="text-slate-200 text-sm mt-4">
+                    ✅ Work with my teammates on solving real-world challenges.
+                </p>
+                <p class="text-slate-200 text-sm mt-4">
+                    ✅ Pick up new technical and design skills under time constraints.
+                </p>
+                <p class="text-slate-200 text-sm mt-4">
+                    ✅ Gain valuable insights through the Nano Mentoring sessions.
+                </p>
+                <p class="text-slate-200 text-sm mt-4">
+                    ✅ Deepen my passion for creating solutions that drive social impact.
+                </p>
+                <p class="text-slate-200 text-sm mt-4">
+                    Although our team wasn’t selected this time, the experience was incredibly rewarding and has inspired me to come back stronger in the future. 💪🚀
+
+                </p>
+                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-2">Tools: Programming, Prototyping</p>
+            </div>
+        </div>
+        <!-- Project 2 -->
+        <div class="pcb-card project-card p-10 rounded-3xl">
+            <div class="project-front">
+                <h3 class="text-2xl font-bold mb-2">IoT Bootcamp</h3>
+                <p class="text-slate-400 text-sm">Quick intro: Hands-on training covering sensors, microcontrollers, and data processing.</p>
+            </div>
+            <div class="project-back">
+                <p class="text-slate-200 text-sm mt-4">
+                    Detailed description: 
+                    I had completed 5-Day IoT Bootcamp organized by CDAC Bangalore in collaboration with Build Club | PSNA CET 
+                <p class="text-slate-200 text-sm mt-4">
+                    Completed a Hands-on IOT bootcamp covering sensors, micro controllers and real-time data processing.
+                </p>
+                <p class="text-slate-200 text-sm mt-4">
+                    Collabrated on mini-projects demonstrating device communications, MQTT/HTTP protocols, and remote
+monitoring dashboards.
+                </p>
+                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-2">Tools: ESP32, Sensors, Cloud Dashboards</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" class="py-24 px-6 reveal">
+    <h2 class="text-3xl font-bold mb-12 text-center">Certifications</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="pcb-card certification-card p-8 rounded-3xl">
+            <div class="cert-front flex items-center justify-between">
+                <div>
+                    <h3 class="text-xl font-bold text-white">24-Hour Hackathon Certificate</h3>
+                    <p class="text-slate-400 text-sm italic">
+                        TechX Madras 2025 – IEEE Certificate of Participation
+                    </p>
+                    <p class="text-slate-400 text-sm italic">
+                        IEEE Computer Society | Sai Ram Institute of Technology
+                    </p>
+                </div>
+                <button class="view-cert-btn text-blue-400 font-bold text-sm hover:underline">View Certificate →</button>
+            </div>
+            <div class="cert-back">
+                <img src="certificate.jpg" alt="Certificate" class="w-full rounded-lg shadow-lg">
+                <p class="text-slate-200 mt-2 text-sm">
+                    Participated in TechX Madras 2025, a technical event conducted by the IEEE Computer Society at Sri Sai Ram Institute of Technology, held on 10th–11th September 2025, gaining exposure to emerging technologies and collaborative problem-solving.
+                </p>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT & FOOTER -->
+<section id="contact" class="py-24 px-6 max-w-6xl mx-auto reveal">
+    <h2 class="text-center text-4xl font-extrabold mb-4">Get In Touch</h2>
+    <p class="text-center text-slate-500 mb-16">Interested in collaboration or internships? Reach out below.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <a href="mailto:balaji.8199a@gmail.com" class="pcb-card p-8 rounded-2xl text-center flex flex-col items-center">
+            <i data-lucide="mail" class="mb-4 text-blue-400"></i>
+            <p class="text-xs font-bold uppercase">Email</p>
+        </a>
+        <a href="https://wa.me/916369548199" class="pcb-card p-8 rounded-2xl text-center flex flex-col items-center">
+            <i data-lucide="message-circle" class="mb-4 text-green-400"></i>
+            <p class="text-xs font-bold uppercase">WhatsApp</p>
+        </a>
+        <a href="https://www.linkedin.com/in/balaji-p-87b5a5334" class="pcb-card p-8 rounded-2xl text-center flex flex-col items-center">
+            <i data-lucide="linkedin" class="mb-4 text-blue-500"></i>
+            <p class="text-xs font-bold uppercase">LinkedIn</p>
+        </a>
+        <a href="resume.pdf" download class="pcb-card p-8 rounded-2xl text-center flex flex-col items-center">
+            <i data-lucide="download" class="mb-4 text-blue-400"></i>
+            <p class="text-xs font-bold uppercase">Resume</p>
+        </a>
+    </div>
+</section>
+
+<footer class="py-20 border-t border-slate-900 text-center">
+    <h2 class="text-3xl font-black text-white">BALAJI P</h2>
+    <p class="text-slate-500 text-xs font-bold tracking-widest uppercase mt-2">Electrical & Electronics Engineering Student</p>
+    <div class="flex flex-wrap justify-center gap-8 mt-10 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+        <a href="#about" class="hover:text-blue-400 transition">About</a>
+        <a href="#skills" class="hover:text-blue-400 transition">Skills</a>
+        <a href="#projects" class="hover:text-blue-400 transition">Projects</a>
+        <a href="#certifications" class="hover:text-blue-400 transition">Certificates</a>
+        <a href="#contact" class="hover:text-blue-400 transition">Contact</a>
+    </div>
+    <p class="mt-12 text-[9px] text-slate-700 uppercase tracking-[0.5em]">© 2025 BALAJI P. All Rights Reserved.</p>
+</footer>
+
+<!-- JS -->
+<script>
+    // Scroll Reveal
+    const observer = new IntersectionObserver(entries=>{
+        entries.forEach(entry=>{if(entry.isIntersecting) entry.target.classList.add("active");});
+    }, { threshold:0.1 });
+    document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+
+    // Lucide icons
+    lucide.createIcons();
+
+    // Project Card Expand
+    const projectCards = document.querySelectorAll(".project-card");
+    projectCards.forEach(card=>{ card.addEventListener("click", ()=>{ card.classList.toggle("expanded"); }); });
+
+    // Certification Reveal
+    const certCards = document.querySelectorAll(".certification-card");
+    certCards.forEach(card=>{
+        const btn=card.querySelector(".view-cert-btn");
+        const back=card.querySelector(".cert-back");
+        btn.addEventListener("click",(e)=>{
+            e.stopPropagation();
+            back.classList.toggle("show");
+        });
+    });
+</script>
+</body>
+</html>
